@@ -25,7 +25,7 @@ class App extends React.Component {
       className = "ContainerAppEbaloOff";
     return (
       <Container className={className}>
-        <Row noGutters><h1 className="HeaderTextApp">SLOGAN</h1></Row>
+        <Row noGutters><h1 className="HeaderTextApp">It matters how you get there</h1></Row>
         <Row noGutters>
           <Form xs={6} onSubmit={this.onSubmitHandler}>
             <Form.Row>

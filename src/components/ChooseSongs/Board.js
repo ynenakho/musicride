@@ -24,14 +24,16 @@ export default class Board extends React.Component {
   }
 
   componentDidMount() {
-    const drake = Dragula(this.containers, { revertOnSpill: true })
+    const drake = Dragula(this.containers, { revertOnSpill: true });
+    
+    
     drake.on('drop', (el, target, source, sibling) => {
       let className = ['Card'];
       let col;
       col = target.className;
       col = col.split(' ')[1].toLowerCase();
       let id = el.getAttribute('name');
-      if (col === 'allsongs') {
+      if (col === 'yourfavorites') {
         className.push('Card-grey');
         el.className = '';
         el.className = className.join(' ');

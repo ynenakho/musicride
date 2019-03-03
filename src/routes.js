@@ -22,7 +22,7 @@ class Routes extends React.Component {
 		super();
 
 		this.state = {
-			rideDuration: 360 * 1000,
+			rideDuration: 360 * 1000 * 2,
 			pickupDuration: 5000,
 			stopDuration: 5000,
 			showCar: false,
@@ -72,12 +72,10 @@ class Routes extends React.Component {
 	progressBarHandler() {
 		const { rideDuration, chooseData: { songs } } = this.state;
 		let length = 0;
-		songs.map(song => {
-			length += song.length;
-		})
+		songs.map(song => length += song.length);
 		length *= 1000;
 		const progressBar = document.querySelector('.progressBarApp');
-		const lengthBar = ((length / rideDuration)) * 75;
+		const lengthBar = ((length / (rideDuration ))) * 75;
 		progressBar.style.width = `${lengthBar > 75 ? 75 : lengthBar}%`;
 	}
 
