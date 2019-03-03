@@ -31,7 +31,6 @@ class App extends React.Component {
   render() {
     return(
       <div className="ui container">
-        <Header />
         <PlaySongs songs={this.songs}/>
       </div>
     );
