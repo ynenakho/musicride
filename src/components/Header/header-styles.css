@@ -8,6 +8,7 @@
     color: #1850A5 !important;
     font-weight: 700;
     font-size: 2rem !important;
+    cursor: pointer;
 }
 
 .header-link {

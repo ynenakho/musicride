@@ -1,7 +1,7 @@
 import React  from 'react';
 import {Link} from 'react-router-dom';
 import Board from "./Board";
-import {Button, Container, Row, Col, InputGroup, FormControl, Card} from "react-bootstrap";
+import {Button, Container, Row, Col, InputGroup, Card} from "react-bootstrap";
 import Countdown from "./Countdown";
 
 class ChooseSongs extends React.Component {
