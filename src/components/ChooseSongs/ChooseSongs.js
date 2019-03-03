@@ -68,14 +68,6 @@ class ChooseSongs extends React.Component {
     console.log(this.props);
     return(
         <Container>
-        <Row className="justify-content-md-center">
-          <Col md="">
-          <Card style={this.style.CountdownCard}>
-            <Countdown date={this.props.rideDuration}/>
-            </Card>
-          </Col>
-        </Row>
-        <br />
         <Row>
           <Col>
             {ChooseSongsToggle ? this.ConnectSpotify() : <Col style={this.style.SyncButton}><Button onClick={this.RenderSpotify} >Sync Spotify</Button></Col>}
