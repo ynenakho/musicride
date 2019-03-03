@@ -45,13 +45,6 @@ class ChooseSongs extends React.Component {
   }
 
   ConnectSpotify = () => {
-    const WrappedLink = () => {
-      return (
-        <Button>
-          <Link exact="true" to="/play" />
-        </Button>
-      )
-    }
     const clients = this.getClients();
       return <div>
         <Col>
@@ -65,7 +58,7 @@ class ChooseSongs extends React.Component {
                 </InputGroup>
               </Col>
         <Board AddToPlaylist={this.props.add} clients={clients}/>
-        <WrappedLink>Submit</WrappedLink>
+        <Link to="/play" exact="true">Submit</Link>
       </div>
   }
   
