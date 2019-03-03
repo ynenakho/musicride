@@ -56,15 +56,16 @@ class ChooseSongs extends React.Component {
       return <div>
         <Col>
                 <InputGroup >
-                  <FormControl
-                    style={{padding: "10px", width: "50%"}}
+                  <input
+                    className="InputApp"
+                    // style={{padding: "10px", width: "50%"}}
                     placeholder="Song Search"
                     aria-label="Song Search"
                     aria-describedby="song search"
                   />
                 </InputGroup>
               </Col>
-        <Board AddToPlaylist={this.props.add} clients={clients}/>
+        <Board remove={this.props.remove} progress={this.props.progress} AddToPlaylist={this.props.add} clients={clients}/>
         <WrappedLink>Submit</WrappedLink>
       </div>
   }
@@ -83,7 +84,7 @@ class ChooseSongs extends React.Component {
         <br />
         <Row>
           <Col>
-            {ChooseSongsToggle ? this.ConnectSpotify() : <Col style={this.style.SyncButton}><Button onClick={this.RenderSpotify} >Sync Spotify</Button></Col>}
+            {ChooseSongsToggle ? this.ConnectSpotify() : <Col style={this.style.SyncButton}><button style={{background: "rgba(82, 69, 194, 0.5)"}} className="ButtonApp" onClick={this.RenderSpotify} >Sync Spotify</button></Col>}
           </Col>
         </Row>
       </Container>
