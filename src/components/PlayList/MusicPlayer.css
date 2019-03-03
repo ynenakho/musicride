@@ -1,3 +1,4 @@
 /* .music-player {
-  background-color: rgb(120, 94, 240) !important;
+  position: sticky;
+  bottom: 60px;
 } */

@@ -1,8 +1,6 @@
 import './SelectedSongControls.css';
 import React from 'react';
 
-
-
 class SelectaedSongControls extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +8,6 @@ class SelectaedSongControls extends React.Component {
     this.state = {
       songName: "", 
       artist: "", 
-      album: "", 
       length: "", 
       filePath: ""
     }
@@ -18,18 +15,15 @@ class SelectaedSongControls extends React.Component {
   
   componentDidUpdate(prevProps) {
     if (prevProps.song !== this.props.song) {
-      const {songName, artist, album, length, filePath } = this.props.song;
+      const {songName, artist, length, filePath } = this.props.song;
       this.setState({
         songName, 
         artist, 
-        album, 
         length, 
         filePath
       });
     }
   }
-  
- 
 
   changeSong() {
     const {songs, song, onSongSelect} = this.props;
@@ -43,42 +37,41 @@ class SelectaedSongControls extends React.Component {
       }
     }  
   }
-  
+
+  changeSongBack() {
+    const {songs, song, onSongSelect} = this.props;
+    for (let i = 0; i < songs.length; i++) {
+      if (song.id === songs[i].id) {
+        if (i === 0) {
+          onSongSelect(songs[songs.length - 1]);
+        }
+        else
+          onSongSelect(songs[i - 1]);
+      }
+    }  
+  }
 
   render() {
-    
-    const {songName, artist, album, length, filePath} = this.state;
+    const {songName, artist, length, filePath} = this.state;
     const {onPlay, onPause, onVolumeUp, onVolumeDown, volume } = this.props;
     const disabled = this.props.song ? false : true;
     return (
-      <div className="selected-song-controls ui segment">
-    
-        <div>
-          <h3>Song name: {songName}</h3>
-          <div>Artist: {artist}</div>
-          <div>Album: {album}</div>
-          <div>Volume: {volume} %</div>
+      <div className="selected-song-controls " fixed="bottom">
+        <div className="flex-component">
+          <div>
+            <p className="head">Song name: {songName}</p>
+            <div>Artist: {artist}</div>
+            <div>Volume: {volume} %</div>
+          </div>
+          <div className="buttons">
+            <i className="arrow left icon big" disabled={disabled} onClick={()=>this.changeSongBack()}></i>
+            <i className="play icon big" disabled={disabled} onClick={onPlay}></i>
+            <i className="pause icon big" disabled={disabled} onClick={onPause}></i>
+            <i className="arrow right icon big" disabled={disabled} onClick={()=>this.changeSong()}></i>
+            <i className="minus icon big" disabled={disabled} onClick={onVolumeDown}></i>
+            <i className="plus icon big" disabled={disabled} onClick={onVolumeUp}></i>
+          </div>
         </div>
-        
-        <div className="ui icon buttons purple" >
-          <button className="ui button" disabled={disabled} onClick={onPlay}>
-            <i className="play icon"></i>
-          </button>
-          <button className="ui button" disabled={disabled} onClick={onPause}>
-            <i className="pause icon"></i>
-          </button>
-          <button className="ui button" disabled={disabled} onClick={()=>this.changeSong()}>
-            <i className="arrow right icon"></i>
-          </button>
-          <button className="ui button" disabled={disabled} onClick={onVolumeDown}>
-            <i className="minus icon"></i>
-          </button>
-          <button className="ui button" disabled={disabled} onClick={onVolumeUp}>
-            <i className="plus icon"></i>
-          </button>
-          
-        </div>
-        
       </div>
     );
   }
