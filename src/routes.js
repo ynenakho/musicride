@@ -33,8 +33,33 @@ class Routes extends React.Component {
 
         this.state = {
             chooseData: {},
-            playData: {}
+            playData: {
+                songs: [{
+                    id: "songN1",
+                    songName: "someSong",
+                    artist: "someArtist",
+                    album: "someAlbun",
+                    length: 435,
+                    filePath: '../songs/dfasdf'
+                  },
+                   {
+                    id: "songN2",
+                    songName: "someSong",
+                    artist: "someArtist",
+                    album: "someAlbun",
+                    length: 435,
+                    filePath: '../songs/dfasdf'
+                  },
+                   {
+                    id: "songN3",
+                    songName: "someSong",
+                    artist: "someArtist",
+                    album: "someAlbun",
+                    length: 435,
+                    filePath: '../songs/dfasdf'
+                  }]}
         }
+        
         this.addChooseData = this.addChooseData.bind(this);
         this.addPlayData = this.addPlayData.bind(this);
     }
