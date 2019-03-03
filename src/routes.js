@@ -104,7 +104,7 @@ class Routes extends React.Component {
 							/>
 							<AppliedRoute path="/choose"
 								Component={ChooseSongs}
-								routeData={{ showCar, ...chooseData }}
+								routeData={chooseData}
 								funcs={{ add: this.addChooseData, remove: this.removeChooseData, progress: this.progressBarHandler }}
 							/>
 							<AppliedRoute path="/play"
