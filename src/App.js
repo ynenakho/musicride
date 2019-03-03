@@ -1,8 +1,6 @@
 import React from 'react';
-// import Header from './components/Header';
-import PlaySongs from './components/PlayList/PlayList';
-import { Form, Button, Col, Container, Row } from 'react-bootstrap';
-
+import { Form, Col, Container, Row } from 'react-bootstrap';
+import './devstyles.css';
 
 class App extends React.Component {
   state = {
@@ -23,14 +21,16 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Container>
+      <Container className="ContainerAppEbalo">
+        <Row noGutters><h1 className="HeaderTextApp">SLOGAN</h1></Row>
         <Row noGutters>
           <Form xs={6} onSubmit={this.onSubmitHandler}>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label>Where from:</Form.Label>
-                <Form.Control
+                <input
+                  className="InputApp"
                   type="text"
+                  placeholder="Where From"
                   name="whereFrom"
                   value={this.state.whereFrom}
                   onChange={this.onChangeHandler}
@@ -38,8 +38,9 @@ class App extends React.Component {
                 />
               </Form.Group>
               <Form.Group as={Col} controlId="formGridPassword">
-                <Form.Label>Where to:</Form.Label>
-                <Form.Control
+                <input
+                  placeholder="Where To"
+                  className="InputApp"
                   type="text"
                   value={this.state.whereTo}
                   onChange={this.onChangeHandler}
@@ -48,14 +49,15 @@ class App extends React.Component {
                 />
               </Form.Group>
             </Form.Row>
-            <Button variant="primary" type="submit">
+            <button className="ButtonApp" type="submit">
               Confirm
-						</Button>
+						</button>
           </Form>
 
         </Row>
       </Container>
-    )}
+    )
+  }
 };
 
 export default App;

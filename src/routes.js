@@ -22,6 +22,7 @@ class Routes extends React.Component {
 		super();
 
 		this.state = {
+			rideDuration: 20000,
 			showCar: false,
 			rideSubmitted: false,
 			whereFrom: "",
@@ -58,7 +59,6 @@ class Routes extends React.Component {
 		this.addChooseData = this.addChooseData.bind(this);
 		this.addPlayData = this.addPlayData.bind(this);
 		this.startAnimation = this.startAnimation.bind(this);
-		this.startAnimationReverse = this.startAnimationReverse.bind(this);
 	}
 
 	addChooseData = (data) => {
@@ -73,39 +73,38 @@ class Routes extends React.Component {
 		this.setState({ playData: data }, () => console.log('added new data to playData ', this.state.playData));
 	}
 
-
 	startAnimation() {
 		const car = document.querySelector('.car')
 		console.log(car);
-		// car.className = "car run";
-		car.style.animation = "runCar 60s linear forwards, flipCar 1s linear 60s forwards";
-	}
-
-	startAnimationReverse() {
-		const car = document.querySelector('.car')
-		car.className = "car run-reverse";
+		car.style.animation = "runCar 5s linear forwards, runCarFinish 20s linear 10s forwards";
+		setTimeout(() => {
+			const pickup = document.querySelector('.pickup');
+			pickup.style.display = "none";
+		}, 10000);
 	}
 
 	confirmRideHandler = (data) => {
 		const { whereTo, whereFrom } = data;
-		this.setState({ whereTo: whereTo, whereFrom: whereFrom, rideSubmitted: true, showCar:true }, () => console.log('this state = ', this.state));
+		this.setState({ whereTo: whereTo, whereFrom: whereFrom, rideSubmitted: true, showCar: true }, () => console.log('this state = ', this.state));
 	}
 
 	render() {
-		const car = this.state.showCar ? <Car funcs={{ start: this.startAnimation, reverse: this.startAnimationReverse }} /> : null;
+		const car = this.state.showCar ? <Car funcs={{ start: this.startAnimation }} /> : null;
 		const { whereFrom, whereTo, rideSubmitted } = this.state;
 		console.log("HERE", this.state.chooseData)
 		return (
 			<Router>
 				<React.Fragment>
 					<Header />
-					{car}
-					<Switch>
-						<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
-						<AppliedRoute path="/choose" Component={ChooseSongs} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
-						<AppliedRoute path="/play" Component={PlayList} routeData={this.state.chooseData} funcs={{ add: this.addPlayData }} />
-						<Route component={NotFound} />
-					</Switch>
+					<div className="ContainerApp">
+						{car}
+						<Switch>
+							<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
+							<AppliedRoute path="/choose" Component={ChooseSongs} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
+							<AppliedRoute path="/play" Component={PlayList} routeData={this.state.chooseData} funcs={{ add: this.addPlayData }} />
+							<Route component={NotFound} />
+						</Switch>
+					</div>
 				</React.Fragment>
 			</Router>
 		);
