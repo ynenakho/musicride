@@ -2,7 +2,6 @@ import React  from 'react';
 import {Link} from 'react-router-dom';
 import Board from "./Board";
 import {Button, Container, Row, Col, InputGroup, FormControl, Card} from "react-bootstrap";
-import Countdown from "./Countdown";
 
 class ChooseSongs extends React.Component {
   constructor(props){
@@ -50,11 +49,11 @@ class ChooseSongs extends React.Component {
       return <div>
         <Col>
                 <InputGroup >
-                  <FormControl
-                    style={{padding: "10px", width: "50%"}}
-                    placeholder="Song Search"
-                    aria-label="Song Search"
-                    aria-describedby="song search"
+                <input
+                  className="InputApp"
+                  placeholder="Song Search"
+                  aria-label="Song Search"
+                  aria-describedby="song search"
                   />
                 </InputGroup>
               </Col>
