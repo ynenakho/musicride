@@ -1,22 +1,28 @@
 .song {
-  background-color: rgb(120, 94, 240) !important;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 15px;
+  background-color: #0088cc  !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
- .play-button:active {
-  color: black ;
+.play-button:hover {
+  transform: translateY(-5px);
+  color: rgb(47, 255, 193);
 } 
 
-.play-button:hover {
-  color: black ;
+
+
+.play-button:active {
+  transform: translateY(0);
 } 
 
 .play-button {
-  color: pink ;
+  color: rgb(15, 200, 233);
   transition-duration: 0.4s;
-  text-decoration: none;
   overflow: hidden;
   cursor: pointer;
 } 
