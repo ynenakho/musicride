@@ -1,5 +1,4 @@
 import React  from 'react';
-import {Link} from 'react-router-dom';
 import Board from "./Board";
 import { Container, Row, Col, InputGroup} from "react-bootstrap";
 
@@ -59,7 +58,6 @@ class ChooseSongs extends React.Component {
                 </InputGroup>
               </Col>
         <Board remove={this.props.remove} progress={this.props.progress} AddToPlaylist={this.props.add} clients={clients}/>
-        <Link to="/play" exact="true">Submit</Link>
       </div>
   }
   
