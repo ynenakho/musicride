@@ -44,7 +44,8 @@ class ChooseSongs extends React.Component {
 
   ConnectSpotify = () => {
     const clients = this.getClients();
-    console.log(this.props.chooseData)
+    console.log(this.props);
+    
       return <div>
         <Col>
                 <InputGroup >
