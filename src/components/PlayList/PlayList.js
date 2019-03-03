@@ -21,9 +21,8 @@ class PlayList extends React.Component {
 
   render() {
     const { activeSong } = this.state;
-    console.log('props from playSongs, ', this.props);
     return(
-      <div>
+      <div className="ui container">
         <MusicPlayer 
           activeSong={activeSong}
           onSongSelect={this.onSongSelect} 

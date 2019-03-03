@@ -1,3 +1,4 @@
+import './MusicPlayer.css';
 import React from 'react';
 import Sound from 'react-sound';
 import SelectaedSongControls from './SelectedSongControls';
@@ -17,10 +18,18 @@ class MusicPlayer extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.activeSong !== this.props.activeSong) {
+      this.setState({
+        playStatus: Sound.status.PLAYING
+      });
+    }
+  }
+
   render() {
     const { volume, playbackRate, loop } = this.state;
     return(
-      <div>
+      <div className="music-player" >
            {this.props.activeSong ?
             <Sound
               url={this.props.activeSong.filePath}

@@ -17,7 +17,7 @@ const SongList = ({songs, onSongSelect}) => {
     />
   );
   return (
-    <div>
+    <div className="ui relaxed divided list">
       {songsToRender}
     </div>
   );
