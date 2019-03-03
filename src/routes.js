@@ -24,7 +24,7 @@ class Routes extends React.Component {
 
 		this.state = {
 			showCar: false,
-            chooseData: {},
+            chooseData: [],
             playData: {
                 songs: [{
                     id: "songN1",
@@ -58,8 +58,9 @@ class Routes extends React.Component {
 		this.startAnimationReverse = this.startAnimationReverse.bind(this);
 	}
 
-	addChooseData(data) {
-		this.setState({ chooseData: data }, () => console.log('added new data to choose ', this.state.chooseData));
+	addChooseData = (data) => {
+
+		this.setState({ chooseData: [...this.state.chooseData, data] }, () => console.log('added new data to choose ', this.state.chooseData));
 	}
 
 	addPlayData(data) {
