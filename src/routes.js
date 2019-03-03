@@ -80,7 +80,7 @@ class Routes extends React.Component {
 
 	startAnimationReverse() {
 		const car = document.querySelector('.car')
-		car.className = "car run-reverse";
+		car.style.animation = "reverseCar 60s linear forwards, reverseFlipCar 1s linear 60s forwards"
 	}
 
 	confirmRideHandler = (data) => {

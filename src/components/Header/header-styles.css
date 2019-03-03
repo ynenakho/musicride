@@ -1,0 +1,19 @@
+.header-container {
+    background-color: #9BE5F3 !important;
+    border-bottom: 1px solid #1850A5;
+    margin-bottom: 40px;
+    color: #1850A5 !important;
+    font-weight: 700;
+}
+
+.header-logo {
+    color: #1850A5 !important;
+    font-weight: 700;
+    font-size: 2rem !important;
+}
+
+.header-link {
+    color: #1850A5 !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
