@@ -54,7 +54,7 @@ getClients (){
     const WrappedLink = () => {
       return (
         <Button>
-          <Link exact={true} to="/play" />
+          <Link exact="true" to="/play" />
         </Button>
       )
     }

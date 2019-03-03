@@ -7,7 +7,6 @@ import App from './App'
 
 
 import './devstyles.css';
-import Home from './components/Home/Home';
 import Header from './components/Header/Header';
 
 const NotFound = () => (<h1>Page was not found</h1>);
@@ -100,7 +99,6 @@ class Routes extends React.Component {
 					{car}
 					<Switch>
 						<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
-						<AppliedRoute path="/home" Component={Home} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
 						<AppliedRoute path="/choose" Component={ChooseSongs} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
 						<AppliedRoute path="/play" Component={PlayList} routeData={this.state.playData} funcs={{ add: this.addPlayData }} />
 						<Route component={NotFound} />
