@@ -87,8 +87,8 @@ class Routes extends React.Component {
 	}
 
 	render() {
-		const car = this.state.showCar ? <Car funcs={{ start: this.startAnimation }} /> : null;
-		const { whereFrom, whereTo, rideSubmitted, showCar, chooseData } = this.state;
+		const car = this.state.showCar ? <Car countdown={90000} funcs={{ start: this.startAnimation }} /> : null;
+		const {showCar, whereFrom, whereTo, rideSubmitted, chooseData } = this.state;
 		console.log("HERE", this.state.chooseData)
 		return (
 			<Router>

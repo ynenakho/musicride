@@ -63,12 +63,19 @@ class Countdown extends Component {
   }
 
   render() {
+    let driver = ""
     const countDown = this.state;
+    if (countDown.min == 0 && countDown.sec == 0)
+      driver = "Your driver is here";
+    else if (countDown.sec > 30 && countDown.min == 0)
+      driver = "EPC:" + countDown.sec + " sec";
+    else
+      driver = "EPC:" + countDown.min + " sec";
     return (
       <div>
         <span className="Countdown-col">
           <div className="Countdown-col-element">
-          <div className="Card-title">~{countDown.min} Left</div>
+          <div className="Card-title">{driver}</div>
           </div>
         </span>
       </div>

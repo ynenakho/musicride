@@ -35,7 +35,7 @@ class Car extends React.Component {
           placement="bottom"
           container={this}
         >
-            <Popover id="popover-contained"><Countdown/></Popover>
+            <Popover id="popover-contained"><Countdown date={this.props.countdown} /></Popover>
           </Overlay>
         <img onLoad={this.handleClick} src="hui.png" alt="pickup"/>
         </div>
