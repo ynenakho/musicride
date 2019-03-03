@@ -1,9 +1,7 @@
 .header-container {
-    background-color: #9BE5F3 !important;
-    border-bottom: 1px solid #1850A5;
-    margin-bottom: 40px;
     color: #1850A5 !important;
     font-weight: 700;
+    background: inherit;
 }
 
 .header-logo {
@@ -19,6 +17,17 @@
 }
 
 .doRightApp {
-    /* margin-right: 0px !important; */
     margin-left: auto;
+}
+
+.header-wrapper {
+    margin: 0 auto;
+    max-width: 1024px;
+    min-width: 288px;
+    width: 90%;
+}
+
+.header-color {
+    background: whitesmoke;
+    border-bottom: 1.5px solid #1850A5;
 }

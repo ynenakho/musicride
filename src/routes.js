@@ -5,7 +5,7 @@ import PlayList from './components/PlayList/PlayList'
 import Car from './components/Car/Car'
 import App from './App'
 
-
+import _ from 'lodash';
 import './devstyles.css';
 import Header from './components/Header/Header';
 
@@ -22,43 +22,21 @@ class Routes extends React.Component {
 		super();
 
 		this.state = {
-			rideDuration: 20000,
+			rideDuration: 360 * 1000,
+			pickupDuration: 5000,
+			stopDuration: 5000,
 			showCar: false,
 			rideSubmitted: false,
-			whereFrom: "",
-			whereTo: "",
-			chooseData: {songs: []},
-			playData: {
-				songs: [{
-					id: "songN1",
-					songName: "One Kiss",
-					artist: "Dua Lipa",
-					album: "someAlbun1",
-					length: 4351,
-					filePath: '/assets/songs/Duke Dumont - Ocean Drive.mp3'
-				},
-				{
-					id: "songN2",
-					songName: "someSong2",
-					artist: "someArtist2",
-					album: "someAlbun2",
-					length: 4352,
-					filePath: '/assets/songs/Pharrell Williams - Happy.mp3'
-				},
-				{
-					id: "songN3",
-					songName: "someSong3",
-					artist: "someArtist3",
-					album: "someAlbun3",
-					length: 4353,
-					filePath: '/assets/songs/Queen - We Are the Champions.mp3'
-				}]
-			}
+			whereFrom: "San Francisco International Airport (SFO), San Francisco, CA",
+			whereTo: "42 Silicon Valley, Dumbarton Circle, Fremont, CA",
+			chooseData: {songs: []}
 		}
 
 		this.addChooseData = this.addChooseData.bind(this);
 		this.addPlayData = this.addPlayData.bind(this);
 		this.startAnimation = this.startAnimation.bind(this);
+		this.progressBarHandler = this.progressBarHandler.bind(this);
+		this.removeChooseData = this.removeChooseData.bind(this);
 	}
 
 	addChooseData = (data) => {
@@ -69,18 +47,38 @@ class Routes extends React.Component {
 		this.setState({ chooseData: {songs: [...this.state.chooseData.songs, data]} }, () => console.log('added new data to choose ', this.state.chooseData));
 	}
 
+	removeChooseData = (data) => {
+		const {chooseData:{songs}} = this.state;
+		console.log("data is " + data);
+		_.remove(songs, {id: data});
+		this.setState({chooseData: {songs: songs}}, () => console.log('after removing ', songs));
+	}
+
 	addPlayData(data) {
 		this.setState({ playData: data }, () => console.log('added new data to playData ', this.state.playData));
 	}
 
 	startAnimation() {
 		const car = document.querySelector('.car')
+		const {pickupDuration, stopDuration, rideDuration} = this.state;
 		console.log(car);
-		car.style.animation = "runCar 5s linear forwards, runCarFinish 20s linear 10s forwards";
+		car.style.animation = `runCar ${pickupDuration / 1000}s linear forwards, runCarFinish ${rideDuration / 1000}s linear ${stopDuration / 1000 + pickupDuration / 1000}s forwards`;
 		setTimeout(() => {
 			const pickup = document.querySelector('.pickup');
 			pickup.style.display = "none";
-		}, 10000);
+		}, pickupDuration + stopDuration);
+	}
+
+	progressBarHandler() {
+		const {rideDuration, chooseData: {songs}} = this.state;
+		let length = 0;
+		songs.map(song => {
+			length += song.length;
+		})
+		length *= 1000;
+		const progressBar = document.querySelector('.progressBarApp');
+		const lengthBar = ((length / rideDuration)) * 75;
+		progressBar.style.width = `${lengthBar > 75 ? 75 : lengthBar}%`;
 	}
 
 	confirmRideHandler = (data) => {
@@ -100,7 +98,10 @@ class Routes extends React.Component {
 						{car}
 						<Switch>
 							<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
-							<AppliedRoute path="/choose" Component={ChooseSongs} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
+							<AppliedRoute path="/choose"
+								Component={ChooseSongs}
+								routeData={this.state.chooseData}
+								funcs={{ add: this.addChooseData, remove: this.removeChooseData, progress: this.progressBarHandler }} />
 							<AppliedRoute path="/play" Component={PlayList} routeData={this.state.chooseData} funcs={{ add: this.addPlayData }} />
 							<Route component={NotFound} />
 						</Switch>

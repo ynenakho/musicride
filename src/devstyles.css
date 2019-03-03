@@ -4,6 +4,10 @@
     justify-content: center;
     align-items: center;
     /* height: 80vh; */
+    margin: 0 auto;
+    max-width: 1024px;
+    min-width: 288px;
+    width: 90%;
 }
 
 .ContainerAppEbalo {
@@ -37,6 +41,7 @@
 }
 
 .InputApp {
+    outline: none;
     background-color: #FFFFFF;
     font-size: 1rem;
     min-height: 55px;
@@ -66,7 +71,7 @@
 .HeaderTextApp {
     margin-top: 0;
     font-weight: 600;
-    color: #1850A5;
+    color: whitesmoke;
     margin-bottom: 32px !important;
 }
 
