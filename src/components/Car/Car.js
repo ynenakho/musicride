@@ -39,11 +39,6 @@ class Header extends React.Component {
           </Overlay>
         <img onLoad={this.handleClick} src="hui.png" alt="pickup"/>
         </div>
-        {/* <div className="Countdown">
-        <Card>
-            <Countdown/>
-        </Card>
-        </div> */}
       </div>
     );
   }
