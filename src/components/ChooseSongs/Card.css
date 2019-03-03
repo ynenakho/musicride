@@ -20,5 +20,7 @@
 
 
 .Card-title {
+  display: flex !important;
+  justify-content: space-between !important;
   font-weight: bold;
 }

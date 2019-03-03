@@ -1,7 +1,7 @@
 .selected-song-controls {
-  position: fixed;
-  width: 85%;
-  bottom: 0px;
+  /* position: absolute;
+  width: 100%;
+  bottom: 0px; */
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   padding: 20px;
