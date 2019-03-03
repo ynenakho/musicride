@@ -1,24 +1,23 @@
 .Card {
-  background-color: lightgrey;
+  background-color: whitesmoke;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.67);
   font-size: 12px;
   padding: 20px;
-  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 25px;
 }
 
 .Card-grey {
-  background-color: rgba(167, 158, 158, 0.671);
-  color: black;
+  background-color: lightgrey;
+  color: rgb(0, 0, 0);
 }
 
 .Card-blue {
-  background-color: skyblue;
+  background-color: #1850A5;
   color: white;
 }
 
-.Card-green {
-  background-color: rgb(150, 190, 150);
-  color: white;
-}
 
 .Card-title {
   font-weight: bold;

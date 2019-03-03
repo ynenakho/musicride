@@ -46,7 +46,7 @@ class ChooseSongs extends React.Component {
 
   ConnectSpotify = () => {
     const clients = this.getClients();
-    console.log(this.props.chooseData.songs)
+    console.log(this.props.chooseData)
       return <div>
         <Col>
                 <InputGroup >
@@ -58,7 +58,7 @@ class ChooseSongs extends React.Component {
                   />
                 </InputGroup>
               </Col>
-        <Board AddToPlaylist={this.props.add} clients={clients}/>
+        <Board remove={this.props.remove} progress={this.props.progress} AddToPlaylist={this.props.add} clients={clients}/>
         <Link to="/play" exact="true">Submit</Link>
       </div>
   }
@@ -68,6 +68,13 @@ class ChooseSongs extends React.Component {
     console.log(this.props);
     return(
         <Container>
+        <Row className="justify-content-md-center">
+          <Col md="">
+          <Card style={this.style.CountdownCard}>
+            <Countdown date={this.props.rideDuration}/>
+            </Card>
+          </Col>
+        </Row>
         <br />
         <Row>
           <Col>

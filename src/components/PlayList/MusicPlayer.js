@@ -29,7 +29,7 @@ class MusicPlayer extends React.Component {
   render() {
     const { volume, playbackRate, loop } = this.state;
     return(
-      <div className="music-player" >
+      <div >
            {this.props.activeSong ?
             <Sound
               url={this.props.activeSong.filePath}

@@ -6,6 +6,7 @@
 }
 
 .car img{
+    color:pink;
     height: 100%;
     width: 100%;
 }
@@ -62,11 +63,26 @@ position: absolute;
 }
 
 .road {
-    height: 10px;
+    height: 21px;
     width: 100%;
     background-color: #444;
-    border-radius: 35%;
+    border-radius: 8px;
     box-shadow: 0 12px 32px rgba(0,0,0,0.5);
     position: absolute;
-    top: 66px;
+    top: 70px;
+}
+
+.progressBarApp {
+    width: 0%;
+    height: 26px;
+    background: #43CB24;
+    background: -webkit-linear-gradient(right, #43CB24, #00BDA5);
+    background: -moz-linear-gradient(right, #43CB24, #00BDA5);
+    background: linear-gradient(to left, #43CB24, #00BDA5);    left: 25%;
+    border-radius: 8px;
+    /* box-shadow: 0 12px 32px rgba(0,0,0,0.5); */
+    position: absolute;
+    top: 68px;
+    z-index: 100;
+    transition: width 3s;
 }
