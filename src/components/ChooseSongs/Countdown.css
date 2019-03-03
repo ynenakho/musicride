@@ -1,0 +1,12 @@
+.Countdown {
+    background-color: skyblue;
+    font-size: 18px;
+    padding: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    width:15%;
+    border-radius: 10px;
+    box-shadow: 0 3px 1px rgba(20,20,20,0.2);
+  }  
+  .Card-title {
+  }

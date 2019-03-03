@@ -1,34 +1,49 @@
 import React from 'react';
 import songs from "../../songsData";
-import Countdown from 'react-countdown-now';
-import { Container, Row, Col } from "react-bootstrap";
+import Board from "./Board";
+import {Container, Row, Col, InputGroup, FormControl, Card} from "react-bootstrap";
+import Countdown from "./Countdown";
+
 class ChooseSongs extends React.Component {
   songs = songs;
+  style = {
+    InputGroup:{
+      borderRradius: "10px",
+      width: "100%",
+      display:"flex",
+      justifyContent:"center"
+    },
+    CountdownCard:{
+      textAlign:"center",
+      borderRradius: "10px",
+      backgroundColor:"#ff00bf"
+    }
+  }
   render() {
     return(
-      <Container>
-        <Row>
-          <Col><Countdown date={Date.now() + 400000} /></Col>
-          <Col>2 of 3</Col>
-          <Col>3 of 3</Col>
+        <div>
+        <Container>
+        <Row className="justify-content-md-center">
+          <Col md="2">
+          <Card style={this.style.CountdownCard}>
+            <Countdown date={Date.now() + 300000}/>
+            </Card>
+          </Col>
         </Row>
+        <br />
+              <Col style={{display:"flex", justifyContent:"center"}}>
+                <InputGroup >
+                  <FormControl
+                    style={{padding: "10px", width: "50%"}}
+                    placeholder="Song Search"
+                    aria-label="Song Search"
+                    aria-describedby="song search"
+                  />
+                </InputGroup>
+              </Col>
+        <Board />
       </Container>
-//       <div class="ui grid">
-//         <div class= "centered four wide row">
-//           <div className="ui card">
-//             <Countdown date={Date.now() + 400000} />
-//           </div>
-//         </div>
-//         <div class= "centered four wide row">
-//         <div class="ui search">
-//   <div class="ui icon input">
-//     <input class="prompt" type="text" placeholder="Search song" />
-//     <i class="search icon"></i>
-//   </div>
-//   <div class="results"></div>
-// </div>
-// </div>
-//       </div>
+        </div>
     );
   }
 }
