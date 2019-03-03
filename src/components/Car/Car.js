@@ -1,9 +1,9 @@
 import React from 'react';
 import Countdown from "../ChooseSongs/Countdown";
 import "./Car.css";
-import { Card, Overlay, Popover } from "react-bootstrap";
+import { Overlay, Popover } from "react-bootstrap";
 
-class Header extends React.Component {
+class Car extends React.Component {
   constructor(){
     super();
 
@@ -44,4 +44,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default Car;
