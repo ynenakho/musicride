@@ -45,20 +45,13 @@ class ChooseSongs extends React.Component {
   }
 
   ConnectSpotify = () => {
-    const WrappedLink = () => {
-      return (
-        <Button>
-          <Link exact="true" to="/play" />
-        </Button>
-      )
-    }
     const clients = this.getClients();
+    console.log(this.props.chooseData)
       return <div>
         <Col>
                 <InputGroup >
-                  <input
-                    className="InputApp"
-                    // style={{padding: "10px", width: "50%"}}
+                  <FormControl
+                    style={{padding: "10px", width: "50%"}}
                     placeholder="Song Search"
                     aria-label="Song Search"
                     aria-describedby="song search"
@@ -66,7 +59,7 @@ class ChooseSongs extends React.Component {
                 </InputGroup>
               </Col>
         <Board remove={this.props.remove} progress={this.props.progress} AddToPlaylist={this.props.add} clients={clients}/>
-        <WrappedLink>Submit</WrappedLink>
+        <Link to="/play" exact="true">Submit</Link>
       </div>
   }
   
@@ -75,14 +68,6 @@ class ChooseSongs extends React.Component {
     return(
         <Container>
         <Row className="justify-content-md-center">
-          <Col md="2">
-          <Card style={this.style.CountdownCard}>
-            <Countdown date={Date.now() + 300000}/>
-            </Card>
-          </Col>
-        </Row>
-        <br />
-        <Row>
           <Col>
             {ChooseSongsToggle ? this.ConnectSpotify() : <Col style={this.style.SyncButton}><button style={{background: "rgba(82, 69, 194, 0.5)"}} className="ButtonApp" onClick={this.RenderSpotify} >Sync Spotify</button></Col>}
           </Col>
@@ -91,5 +76,6 @@ class ChooseSongs extends React.Component {
     );
   }
 }
+
 
 export default ChooseSongs;
