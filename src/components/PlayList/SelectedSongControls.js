@@ -1,4 +1,7 @@
+import './SelectedSongControls.css';
 import React from 'react';
+
+
 
 class SelectaedSongControls extends React.Component {
   constructor(props) {
@@ -14,7 +17,7 @@ class SelectaedSongControls extends React.Component {
   }
   
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props ) {
+    if (prevProps.song !== this.props.song) {
       const {songName, artist, album, length, filePath } = this.props.song;
       this.setState({
         songName, 
@@ -25,14 +28,14 @@ class SelectaedSongControls extends React.Component {
       });
     }
   }
+  
+ 
 
   changeSong() {
     const {songs, song, onSongSelect} = this.props;
     for (let i = 0; i < songs.length; i++) {
       if (song.id === songs[i].id) {
         if (i === (songs.length - 1)) {
-          console.log("HERERERERE");
-          
           onSongSelect(songs[0]);
         }
         else
@@ -40,32 +43,24 @@ class SelectaedSongControls extends React.Component {
       }
     }  
   }
+  
 
   render() {
+    
     const {songName, artist, album, length, filePath} = this.state;
     const {onPlay, onPause, onVolumeUp, onVolumeDown, volume } = this.props;
     const disabled = this.props.song ? false : true;
     return (
-      <div className="ui segment">
+      <div className="selected-song-controls ui segment">
+    
         <div>
-          <div>Song name: {songName}</div>
+          <h3>Song name: {songName}</h3>
           <div>Artist: {artist}</div>
           <div>Album: {album}</div>
-          <div>Duration: {length}</div>
-          <div>{filePath}</div>
+          <div>Volume: {volume} %</div>
         </div>
-        {/* <div>
-          Volume:
-          <button onClick={this.props.onVolumeDown}>-</button>
-          <button onClick={this.props.onVolumeUp}>+</button>
-          <ul>
-            {controls.play && control('Play', this.props.onPlay)}
-            {controls.stop && control('Stop', this.props.onStop)}
-            {controls.pause && control('Pause', this.props.onPause)}
-            {controls.resume && control('Resume', this.props.onResume)}
-          </ul>
-        </div> */}
-        <div className="ui icon buttons">
+        
+        <div className="ui icon buttons purple" >
           <button className="ui button" disabled={disabled} onClick={onPlay}>
             <i className="play icon"></i>
           </button>
@@ -83,9 +78,7 @@ class SelectaedSongControls extends React.Component {
           </button>
           
         </div>
-        <div>
-            Volume: {volume} %
-          </div>
+        
       </div>
     );
   }

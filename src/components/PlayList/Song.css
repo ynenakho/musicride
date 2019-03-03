@@ -1,0 +1,22 @@
+.song {
+  background-color: rgb(120, 94, 240) !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ .play-button:active {
+  color: black ;
+} 
+
+.play-button:hover {
+  color: black ;
+} 
+
+.play-button {
+  color: pink ;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+} 
