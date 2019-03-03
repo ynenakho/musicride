@@ -1,57 +1,84 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import validator from 'validator';
 
 class Login extends Component {
-    email = "";
-    password = "";
+  state = {
+    email: "",
+    password: "",
+    error: null,
+    validated: false,
+  };
 
-    validateForm() {
-        return (this.email.length > 0 && this.password.length > 6);
+
+  onSubmitHandler = (event) => {
+    const form = event.currentTarget;
+    this.setState({ validated: true });
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+      return ;
     }
+    this.props.history.push('/home');
+    event.preventDefault();
+  }
 
-    handleChange = (event) => {
-        this.setState({
-            [event.target.id]: event.target.value
-        })
-    }
+  onChangeHandler = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-    }
+  render() {
+    const { email, password, validated } = this.state;
+    const isInvalid = (password === '' || email === '');
 
-    render() {
-        return (
-            <div className="Login">
-              <form onSubmit={this.handleSubmit}>
-                <FormGroup controlId="email" bsSize="large">
-                  <ControlLabel>Email</ControlLabel>
-                  <FormControl
-                    autoFocus
-                    type="email"
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                  />
-                </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                  <ControlLabel>Password</ControlLabel>
-                  <FormControl
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                    type="password"
-                  />
-                </FormGroup>
-                <Button
-                  block
-                  bsSize="large"
-                  disabled={!this.validateForm()}
-                  type="submit"
-                >
-                  Login
-                </Button>
-              </form>
-            </div>
-          );
-    };
+    return (
+      <div className="Login">
+        <Form
+          noValidate
+          validated={validated}
+          onSubmit={this.onSubmitHandler}
+        >
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              required
+              autoFocus type="email"
+              placeholder="Enter email"
+              type="email"
+              name="email"
+              value={email}
+              onChange={this.onChangeHandler}
+              isValid={email.length > 6}
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              name="password"
+              value={password}
+              onChange={this.onChangeHandler}
+              type="password"
+              placeholder="Password"
+              isValid={password.length > 6} />
+          </Form.Group>
+          <Button
+            variant="primary"
+            type="submit"
+          disabled={isInvalid}
+          >
+            Submit
+          </Button>
+        </Form>
+      </div>
+    );
+  };
 }
 
 export default Login;
