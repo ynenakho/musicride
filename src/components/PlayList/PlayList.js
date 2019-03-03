@@ -1,12 +1,18 @@
 import React from 'react';
 import SongList from './SongList';
-import SelectaedSong from './SelectedSong';
+
+import MusicPlayer from './MusicPlayer';
+
 
 class PlayList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { songList: null, activeSong: null};
+    this.state = { 
+      songList: null, 
+      activeSong: null
+    };
+    this.onSongSelect = this.onSongSelect.bind(this);
   }
 
   onSongSelect = (song) => {
@@ -14,12 +20,15 @@ class PlayList extends React.Component {
   };
 
   render() {
+    const { activeSong } = this.state;
     console.log('props from playSongs, ', this.props);
     return(
       <div>
-        <div>
-          <SelectaedSong song={this.state.activeSong}/>
-        </div>
+        <MusicPlayer 
+          activeSong={activeSong}
+          onSongSelect={this.onSongSelect} 
+          songs={this.props.songs} 
+        />
         <SongList 
           onSongSelect={this.onSongSelect} 
           songs={this.props.songs} 

@@ -40,7 +40,7 @@ class Routes extends React.Component {
                     artist: "Dua Lipa",
                     album: "someAlbun1",
                     length: 4351,
-                    filePath: '/public/assets/songs/Duke Dumont - Ocean Drive.mp3'
+                    filePath: '/assets/songs/Duke Dumont - Ocean Drive.mp3'
                   },
                    {
                     id: "songN2",
@@ -48,7 +48,7 @@ class Routes extends React.Component {
                     artist: "someArtist2",
                     album: "someAlbun2",
                     length: 4352,
-                    filePath: '/public/assets/songs/Pharrell Williams - Happy.mp3'
+                    filePath: '/assets/songs/Pharrell Williams - Happy.mp3'
                   },
                    {
                     id: "songN3",
@@ -56,7 +56,7 @@ class Routes extends React.Component {
                     artist: "someArtist3",
                     album: "someAlbun3",
                     length: 4353,
-                    filePath: '/public/assets/songs/Queen - We Are the Champions.mp3'
+                    filePath: '/assets/songs/Queen - We Are the Champions.mp3'
                   }]}
         }
         
