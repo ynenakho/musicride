@@ -1,7 +1,5 @@
 import React from 'react';
-// import Header from './components/Header';
-import PlaySongs from './components/PlayList/PlayList';
-import { Form, Button, Col, Container, Row } from 'react-bootstrap';
+import { Form, Col, Container, Row } from 'react-bootstrap';
 import './devstyles.css';
 
 class App extends React.Component {

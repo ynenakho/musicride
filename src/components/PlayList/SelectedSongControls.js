@@ -29,8 +29,8 @@ class SelectaedSongControls extends React.Component {
   changeSong() {
     const {songs, song, onSongSelect} = this.props;
     for (let i = 0; i < songs.length; i++) {
-      if (song.id == songs[i].id) {
-        if (i == (songs.length - 1)) {
+      if (song.id === songs[i].id) {
+        if (i === (songs.length - 1)) {
           console.log("HERERERERE");
           
           onSongSelect(songs[0]);

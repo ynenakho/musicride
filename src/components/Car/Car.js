@@ -9,7 +9,6 @@ class Header extends React.Component {
   }
 
   render() {
-    const { start, reverse } = this.props.funcs;
     return (
       <div className="ui container header">
         <div className="car">
@@ -19,8 +18,6 @@ class Header extends React.Component {
         <div className="pickup">
           <img src="hui.png" alt="pickup"/> 
         </div>
-        <button className="dev-start" onClick={() => start()}>Start</button>
-        <button className="dev-prev" onClick={() => reverse()}>reverse</button>
       </div>
     );
   }

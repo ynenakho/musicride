@@ -22,6 +22,7 @@ class Routes extends React.Component {
 		super();
 
 		this.state = {
+			rideDuration: 20000,
 			showCar: false,
 			rideSubmitted: false,
 			whereFrom: "",
@@ -58,11 +59,9 @@ class Routes extends React.Component {
 		this.addChooseData = this.addChooseData.bind(this);
 		this.addPlayData = this.addPlayData.bind(this);
 		this.startAnimation = this.startAnimation.bind(this);
-		this.startAnimationReverse = this.startAnimationReverse.bind(this);
 	}
 
 	addChooseData = (data) => {
-
 		this.setState({ chooseData: [...this.state.chooseData, data] }, () => console.log('added new data to choose ', this.state.chooseData));
 	}
 
@@ -70,17 +69,14 @@ class Routes extends React.Component {
 		this.setState({ playData: data }, () => console.log('added new data to playData ', this.state.playData));
 	}
 
-
 	startAnimation() {
 		const car = document.querySelector('.car')
 		console.log(car);
-		// car.className = "car run";
-		car.style.animation = "runCar 5s linear forwards, flipCar 1s linear 60s forwards";
-	}
-
-	startAnimationReverse() {
-		const car = document.querySelector('.car')
-		car.style.animation = "reverseCar 60s linear forwards, reverseFlipCar 1s linear 60s forwards"
+		car.style.animation = "runCar 5s linear forwards, runCarFinish 20s linear 10s forwards";
+		setTimeout(() => {
+			const pickup = document.querySelector('.pickup');
+			pickup.style.display = "none";
+		}, 10000);
 	}
 
 	confirmRideHandler = (data) => {
@@ -89,7 +85,7 @@ class Routes extends React.Component {
 	}
 
 	render() {
-		const car = this.state.showCar ? <Car funcs={{ start: this.startAnimation, reverse: this.startAnimationReverse }} /> : null;
+		const car = this.state.showCar ? <Car funcs={{ start: this.startAnimation }} /> : null;
 		const { whereFrom, whereTo, rideSubmitted } = this.state;
 
 		return (
