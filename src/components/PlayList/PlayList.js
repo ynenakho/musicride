@@ -8,6 +8,7 @@ class PlayList extends React.Component {
     this.state = { songList: null, activeSong: null};
   }
   render() {
+    console.log('props from playSongs, ', this.props);
     return(
       <div>
         <SongList songs={this.props.songs} />
