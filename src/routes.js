@@ -7,7 +7,6 @@ import App from './App'
 
 
 import './devstyles.css';
-import Home from './components/Home/Home';
 import Header from './components/Header/Header';
 
 const NotFound = () => (<h1>Page was not found</h1>);
@@ -27,7 +26,7 @@ class Routes extends React.Component {
 			rideSubmitted: false,
 			whereFrom: "",
 			whereTo: "",
-			chooseData: {},
+			chooseData: [],
 			playData: {
 				songs: [{
 					id: "songN1",
@@ -62,8 +61,9 @@ class Routes extends React.Component {
 		this.startAnimationReverse = this.startAnimationReverse.bind(this);
 	}
 
-	addChooseData(data) {
-		this.setState({ chooseData: data }, () => console.log('added new data to choose ', this.state.chooseData));
+	addChooseData = (data) => {
+
+		this.setState({ chooseData: [...this.state.chooseData, data] }, () => console.log('added new data to choose ', this.state.chooseData));
 	}
 
 	addPlayData(data) {
@@ -100,7 +100,6 @@ class Routes extends React.Component {
 						{car}
 						<Switch>
 							<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
-						<AppliedRoute path="/home" Component={Home} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
 							<AppliedRoute path="/choose" Component={ChooseSongs} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
 							<AppliedRoute path="/play" Component={PlayList} routeData={this.state.playData} funcs={{ add: this.addPlayData }} />
 							<Route component={NotFound} />
