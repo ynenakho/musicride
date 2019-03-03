@@ -11,43 +11,37 @@ class ChooseSongs extends React.Component {
       ChooseSongsToggle: false
     }
     this.RenderSpotify = this.RenderSpotify.bind(this);
-  this.style = {
-    InputGroup:{
-      borderRradius: "10px",
-      width: "100%",
-      display:"flex",
-      justifyContent:"center"
-    },
-    CountdownCard:{
-      textAlign:"center",
-      borderRradius: "10px",
-      backgroundColor:"#ff00bf"
-    },
-    SyncButton:{
-      display:"flex",
-      justifyContent:"center"
+    this.style = {
+      InputGroup:{
+        borderRradius: "10px",
+        width: "100%",
+        display:"flex",
+        justifyContent:"center"
+      },
+      CountdownCard:{
+        textAlign:"center",
+        borderRradius: "10px",
+        backgroundColor:"#ff00bf"
+      },
+      SyncButton:{
+        display:"flex",
+        justifyContent:"center"
+      }
     }
   }
-}
-RenderSpotify = () => {
-  this.setState({ChooseSongsToggle:true});
-}
-getClients (){
-  return [
-    {id:'1', length:206, songName:'Ocean Drive',artist:'Duke Dumont', filepath:'/assets/songs/Duke Dumont - Ocean Drive.mp3', status:'allsongs',},
-    {id:'2', length:233, songName:'Happy',artist:'Pharrell Williams', filepath:'/assets/songs/Pharrell Williams - Happy.mp3', status:'allsongs',},
-    {id:'3', length:214, songName:'Dont stop me now I',artist:'Queen', filepath:'/assets/songs/Queen - Dont stop me now I.mp3', status:'allsongs',},
-    {id:'4', length:209, songName:'We are the Champions',artist:'Queen', filepath:'/assets/songs/Queen - We are the Champions.mp3', status:'allsongs',},
-    {id:'5', length:274, songName:'Umbrella',artist:'Rihanna feat. JAY-Z', filepath:'/assets/songs/Rihanna feat. JAY-Z - Umbrella.mp3', status:'allsongs',},
-    {id:'6', length:233, songName:'Seven Nation Army',artist:'The White Stripes', filepath:'/assets/songs/The White Stripes - Seven Nation Army.mp3', status:'allsongs',},
-    {id:'7', length:150, songName:'Go Solo',artist:'Tom Rosenthal', filepath:'/assets/songs/Tom Rosenthal - Go Solo.mp3',status: 'allsongs',},
-  ]
-  // .map(companyDetails => ({
-    //   id: companyDetails.id,
-    //   songName: companyDetails.songName,
-    //   artist: companyDetails,
-    //   status: companyDetails[3],
-    // }));
+  RenderSpotify = () => {
+    this.setState({ChooseSongsToggle:true});
+  }
+  getClients (){
+    return [
+      {id:'1', length:206, songName:'Ocean Drive',artist:'Duke Dumont', filePath:'/assets/songs/Duke Dumont - Ocean Drive.mp3', status:'allsongs',},
+      {id:'2', length:233, songName:'Happy',artist:'Pharrell Williams', filePath:'/assets/songs/Pharrell Williams - Happy.mp3', status:'allsongs',},
+      {id:'3', length:214, songName:'Dont stop me now I',artist:'Queen', filePath:'/assets/songs/Queen - Dont stop me now l.mp3', status:'allsongs',},
+      {id:'4', length:209, songName:'We are the Champions',artist:'Queen', filePath:'/assets/songs/Queen - We are the Champions.mp3', status:'allsongs',},
+      {id:'5', length:274, songName:'Umbrella',artist:'Rihanna feat. JAY-Z', filePath:'/assets/songs/Rihanna feat. JAY-Z - Umbrella.mp3', status:'allsongs',},
+      {id:'6', length:233, songName:'Seven Nation Army',artist:'The White Stripes', filePath:'/assets/songs/The White Stripes - Seven Nation Army.mp3', status:'allsongs',},
+      {id:'7', length:150, songName:'Go Solo',artist:'Tom Rosenthal', filePath:'/assets/songs/Tom Rosenthal - Go Solo.mp3',status: 'allsongs',},
+    ]
   }
 
   ConnectSpotify = () => {
@@ -77,7 +71,6 @@ getClients (){
   
   render() {
     const {ChooseSongsToggle} = this.state;
-    const clients = this.getClients();
     return(
         <Container>
         <Row className="justify-content-md-center">

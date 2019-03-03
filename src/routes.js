@@ -26,7 +26,7 @@ class Routes extends React.Component {
 			rideSubmitted: false,
 			whereFrom: "",
 			whereTo: "",
-			chooseData: [],
+			chooseData: {songs: []},
 			playData: {
 				songs: [{
 					id: "songN1",
@@ -62,8 +62,11 @@ class Routes extends React.Component {
 	}
 
 	addChooseData = (data) => {
-
-		this.setState({ chooseData: [...this.state.chooseData, data] }, () => console.log('added new data to choose ', this.state.chooseData));
+		for (let i = 0; i < this.state.chooseData.songs.length; i++) {
+			if (this.state.chooseData.songs[i].id == data.id)
+				return ;
+		}
+		this.setState({ chooseData: {songs: [...this.state.chooseData.songs, data]} }, () => console.log('added new data to choose ', this.state.chooseData));
 	}
 
 	addPlayData(data) {
@@ -91,7 +94,7 @@ class Routes extends React.Component {
 	render() {
 		const car = this.state.showCar ? <Car funcs={{ start: this.startAnimation, reverse: this.startAnimationReverse }} /> : null;
 		const { whereFrom, whereTo, rideSubmitted } = this.state;
-
+		console.log("HERE", this.state.chooseData)
 		return (
 			<Router>
 				<React.Fragment>
@@ -100,7 +103,7 @@ class Routes extends React.Component {
 					<Switch>
 						<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
 						<AppliedRoute path="/choose" Component={ChooseSongs} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
-						<AppliedRoute path="/play" Component={PlayList} routeData={this.state.playData} funcs={{ add: this.addPlayData }} />
+						<AppliedRoute path="/play" Component={PlayList} routeData={this.state.chooseData} funcs={{ add: this.addPlayData }} />
 						<Route component={NotFound} />
 					</Switch>
 				</React.Fragment>

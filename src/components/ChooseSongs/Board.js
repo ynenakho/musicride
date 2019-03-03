@@ -21,7 +21,7 @@ export default class Board extends React.Component {
       playlist: React.createRef(),
     }
   }
-  componentDidMount () {
+  componentDidMount() {
     const drake = Dragula(this.containers, {revertOnSpill: true})
     drake.on('drop', (el, target, source, sibling) => {
       let className = ['Card'];
