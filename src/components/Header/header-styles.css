@@ -17,3 +17,8 @@
     font-weight: 700;
     font-size: 1.5rem;
 }
+
+.doRightApp {
+    /* margin-right: 0px !important; */
+    margin-left: auto;
+}

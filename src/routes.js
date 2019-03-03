@@ -75,7 +75,7 @@ class Routes extends React.Component {
 		const car = document.querySelector('.car')
 		console.log(car);
 		// car.className = "car run";
-		car.style.animation = "runCar 60s linear forwards, flipCar 1s linear 60s forwards";
+		car.style.animation = "runCar 5s linear forwards, flipCar 1s linear 60s forwards";
 	}
 
 	startAnimationReverse() {
@@ -85,7 +85,7 @@ class Routes extends React.Component {
 
 	confirmRideHandler = (data) => {
 		const { whereTo, whereFrom } = data;
-		this.setState({ whereTo: whereTo, whereFrom: whereFrom, rideSubmitted: true, showCar:true }, () => console.log('this state = ', this.state));
+		this.setState({ whereTo: whereTo, whereFrom: whereFrom, rideSubmitted: true, showCar: true }, () => console.log('this state = ', this.state));
 	}
 
 	render() {
@@ -96,14 +96,16 @@ class Routes extends React.Component {
 			<Router>
 				<React.Fragment>
 					<Header />
-					{car}
-					<Switch>
-						<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
+					<div className="ContainerApp">
+						{car}
+						<Switch>
+							<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
 						<AppliedRoute path="/home" Component={Home} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
-						<AppliedRoute path="/choose" Component={ChooseSongs} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
-						<AppliedRoute path="/play" Component={PlayList} routeData={this.state.playData} funcs={{ add: this.addPlayData }} />
-						<Route component={NotFound} />
-					</Switch>
+							<AppliedRoute path="/choose" Component={ChooseSongs} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
+							<AppliedRoute path="/play" Component={PlayList} routeData={this.state.playData} funcs={{ add: this.addPlayData }} />
+							<Route component={NotFound} />
+						</Switch>
+					</div>
 				</React.Fragment>
 			</Router>
 		);

@@ -16,7 +16,9 @@ class Header extends React.Component {
           <img src="/car.png" alt="car" />
         </div>
         <div className="road" />
-        <div className="pickup" />
+        <div className="pickup">
+          <img src="hui.png" alt="pickup"/> 
+        </div>
         <button className="dev-start" onClick={() => start()}>Start</button>
         <button className="dev-prev" onClick={() => reverse()}>reverse</button>
       </div>

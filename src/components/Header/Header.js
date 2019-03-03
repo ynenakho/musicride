@@ -11,7 +11,7 @@ const header = withRouter((props) => {
             <Navbar.Brand onClick={() => {props.history.push('/')}} className="header-logo">Music Ride</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
+                <Nav className="doRightApp">
                     <Nav.Link className="header-link" onClick={() => {props.history.push('/choose')}}>Songs</Nav.Link>
                     <Nav.Link className="header-link" onClick={() => {props.history.push('/play')}}>Play</Nav.Link>
                 </Nav>
