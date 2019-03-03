@@ -1,7 +1,6 @@
 import React  from 'react';
-import {Link} from 'react-router-dom';
 import Board from "./Board";
-import {Button, Container, Row, Col, InputGroup, FormControl, Card} from "react-bootstrap";
+import { Container, Row, Col, InputGroup} from "react-bootstrap";
 
 class ChooseSongs extends React.Component {
   constructor(props){
@@ -49,16 +48,16 @@ class ChooseSongs extends React.Component {
       return <div>
         <Col>
                 <InputGroup >
-                <input
-                  className="InputApp"
-                  placeholder="Song Search"
-                  aria-label="Song Search"
-                  aria-describedby="song search"
+                  <input
+                    className="InputApp"
+                    style={{width:'50%', margin:'0 auto'}}
+                    placeholder="Song Search"
+                    aria-label="Song Search"
+                    aria-describedby="song search"
                   />
                 </InputGroup>
               </Col>
         <Board remove={this.props.remove} progress={this.props.progress} AddToPlaylist={this.props.add} clients={clients}/>
-        <Link to="/play" exact="true">Submit</Link>
       </div>
   }
   

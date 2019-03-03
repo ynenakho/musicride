@@ -20,8 +20,11 @@ class App extends React.Component {
     })
   }
   render() {
+    let className = "ContainerAppEbalo";
+    if (this.props.showCar)
+      className = "ContainerAppEbaloOff";
     return (
-      <Container className="ContainerAppEbalo">
+      <Container className={className}>
         <Row noGutters><h1 className="HeaderTextApp">SLOGAN</h1></Row>
         <Row noGutters>
           <Form xs={6} onSubmit={this.onSubmitHandler}>

@@ -11,7 +11,10 @@ export default class Card extends React.Component {
     }
     return (
       <div className={className.join(' ')} name={this.props.client.id} data-status={this.props.status}>
-        <div className="Card-title">{this.props.client.artist} - {this.props.client.songName}   {this.props.client.length}</div>
+        <div className="Card-title">
+          <div>{this.props.client.artist} - {this.props.client.songName}</div> 
+          <div>{this.props.client.length/100}</div>  
+        </div>
       </div>
     );
   }

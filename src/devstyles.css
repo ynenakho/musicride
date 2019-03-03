@@ -18,6 +18,13 @@
     align-items: center;
 }
 
+.ContainerAppEbaloOff {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .ButtonApp {
     background-color: #1850A5;
     border: none;
