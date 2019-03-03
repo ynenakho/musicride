@@ -1,5 +1,6 @@
 import React from 'react';
 import SongList from './SongList';
+import SelectaedSong from './SelectedSong';
 
 class PlayList extends React.Component {
   constructor(props) {
@@ -7,11 +8,22 @@ class PlayList extends React.Component {
 
     this.state = { songList: null, activeSong: null};
   }
+
+  onSongSelect = (song) => {
+    this.setState({ activeSong: song });
+  };
+
   render() {
     console.log('props from playSongs, ', this.props);
     return(
       <div>
-        <SongList songs={this.props.songs} />
+        <div>
+          <SelectaedSong song={this.state.activeSong}/>
+        </div>
+        <SongList 
+          onSongSelect={this.onSongSelect} 
+          songs={this.props.songs} 
+        />
       </div>
     );
   }

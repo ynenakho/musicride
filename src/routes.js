@@ -36,27 +36,27 @@ class Routes extends React.Component {
             playData: {
                 songs: [{
                     id: "songN1",
-                    songName: "someSong",
-                    artist: "someArtist",
-                    album: "someAlbun",
-                    length: 435,
-                    filePath: '../songs/dfasdf'
+                    songName: "someSong1",
+                    artist: "someArtist1",
+                    album: "someAlbun1",
+                    length: 4351,
+                    filePath: '../songs/dfasdf1'
                   },
                    {
                     id: "songN2",
-                    songName: "someSong",
-                    artist: "someArtist",
-                    album: "someAlbun",
-                    length: 435,
-                    filePath: '../songs/dfasdf'
+                    songName: "someSong2",
+                    artist: "someArtist2",
+                    album: "someAlbun2",
+                    length: 4352,
+                    filePath: '../songs/dfasdf2'
                   },
                    {
                     id: "songN3",
-                    songName: "someSong",
-                    artist: "someArtist",
-                    album: "someAlbun",
-                    length: 435,
-                    filePath: '../songs/dfasdf'
+                    songName: "someSong3",
+                    artist: "someArtist3",
+                    album: "someAlbun3",
+                    length: 4353,
+                    filePath: '../songs/dfasdf3'
                   }]}
         }
         
