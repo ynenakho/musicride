@@ -49,11 +49,12 @@ class App extends React.Component {
                 />
               </Form.Group>
             </Form.Row>
-            <button className="ButtonApp" type="submit">
-              Confirm
+            <Row className="justify-content-center">
+              <button className="ButtonApp" type="submit">
+                Confirm
 						</button>
+            </Row>
           </Form>
-
         </Row>
       </Container>
     )
