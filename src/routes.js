@@ -89,8 +89,8 @@ class Routes extends React.Component {
 	}
 
 	render() {
-		const car = this.state.showCar ? <Car funcs={{ start: this.startAnimation }} /> : null;
-		const { whereFrom, whereTo, rideSubmitted } = this.state;
+		const car = this.state.showCar ? <Car countdown={this.state.rideDuration} funcs={{ start: this.startAnimation }} /> : null;
+		const { whereFrom, whereTo, rideSubmitted, chooseData, rideDuration } = this.state;
 		console.log("HERE", this.state.chooseData)
 		return (
 			<Router>
@@ -100,8 +100,8 @@ class Routes extends React.Component {
 						{car}
 						<Switch>
 							<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
-							<AppliedRoute path="/choose" Component={ChooseSongs} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
-							<AppliedRoute path="/play" Component={PlayList} routeData={this.state.chooseData} funcs={{ add: this.addPlayData }} />
+							<AppliedRoute path="/choose" Component={ChooseSongs} routeData={{chooseData}} funcs={{ add: this.addChooseData }} />
+							<AppliedRoute path="/play" Component={PlayList} routeData={chooseData} funcs={{ add: this.addPlayData }} />
 							<Route component={NotFound} />
 						</Switch>
 					</div>

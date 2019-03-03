@@ -48,7 +48,6 @@ class MusicPlayer extends React.Component {
             /> : null}
             <div>
               <SelectaedSongControls
-                
                 songs={this.props.songs}
                 onSongSelect={this.props.onSongSelect}
                 song={this.props.activeSong}

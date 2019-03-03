@@ -46,6 +46,7 @@ class ChooseSongs extends React.Component {
 
   ConnectSpotify = () => {
     const clients = this.getClients();
+    console.log(this.props.chooseData.songs)
       return <div>
         <Col>
                 <InputGroup >
@@ -64,15 +65,9 @@ class ChooseSongs extends React.Component {
   
   render() {
     const {ChooseSongsToggle} = this.state;
+    console.log(this.props);
     return(
         <Container>
-        <Row className="justify-content-md-center">
-          <Col md="2">
-          <Card style={this.style.CountdownCard}>
-            <Countdown date={Date.now() + 300000}/>
-            </Card>
-          </Col>
-        </Row>
         <br />
         <Row>
           <Col>
