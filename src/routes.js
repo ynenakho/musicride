@@ -19,40 +19,38 @@ const AppliedRoute = ({ path, Component, routeData, funcs }) => (
 
 
 class Routes extends React.Component {
-
 	constructor() {
 		super();
 
 		this.state = {
 			showCar: false,
-			chooseData: {},
-			playData: {
-				songs: [{
-					id: "songN1",
-					songName: "someSong",
-					artist: "someArtist",
-					album: "someAlbun",
-					length: 435,
-					filePath: '../songs/dfasdf'
-				},
-				{
-					id: "songN2",
-					songName: "someSong",
-					artist: "someArtist",
-					album: "someAlbun",
-					length: 435,
-					filePath: '../songs/dfasdf'
-				},
-				{
-					id: "songN3",
-					songName: "someSong",
-					artist: "someArtist",
-					album: "someAlbun",
-					length: 435,
-					filePath: '../songs/dfasdf'
-				}]
-			}
-		}
+            chooseData: {},
+            playData: {
+                songs: [{
+                    id: "songN1",
+                    songName: "One Kiss",
+                    artist: "Dua Lipa",
+                    album: "someAlbun1",
+                    length: 4351,
+                    filePath: '/assets/songs/Duke Dumont - Ocean Drive.mp3'
+                  },
+                   {
+                    id: "songN2",
+                    songName: "someSong2",
+                    artist: "someArtist2",
+                    album: "someAlbun2",
+                    length: 4352,
+                    filePath: '/assets/songs/Pharrell Williams - Happy.mp3'
+                  },
+                   {
+                    id: "songN3",
+                    songName: "someSong3",
+                    artist: "someArtist3",
+                    album: "someAlbun3",
+                    length: 4353,
+                    filePath: '/assets/songs/Queen - We Are the Champions.mp3'
+                  }]}
+        }
 
 		this.addChooseData = this.addChooseData.bind(this);
 		this.addPlayData = this.addPlayData.bind(this);

@@ -1,18 +1,19 @@
 import React from 'react';
 import Song from './Song';
 
-const SongList = ({songs}) => {
+const SongList = ({songs, onSongSelect}) => {
   console.log(songs);
   
   const songsToRender = songs.map(({id, songName, artist, album, length, filePath}) => 
-    <Song 
-      name={songName}
+    <Song
+      onSongSelect={onSongSelect}
+      songName={songName}
       id={id}
       key={id}
       artist={artist}
       album={album}
       length={length}
-      path={filePath}
+      filePath={filePath}
     />
   );
   return (
