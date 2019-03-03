@@ -27,6 +27,8 @@ class SelectaedSongControls extends React.Component {
 
   changeSong() {
     const {songs, song, onSongSelect} = this.props;
+    if (!song)
+      return ;
     for (let i = 0; i < songs.length; i++) {
       if (song.id === songs[i].id) {
         if (i === (songs.length - 1)) {
@@ -40,6 +42,8 @@ class SelectaedSongControls extends React.Component {
 
   changeSongBack() {
     const {songs, song, onSongSelect} = this.props;
+    if (!song)
+      return ;
     for (let i = 0; i < songs.length; i++) {
       if (song.id === songs[i].id) {
         if (i === 0) {
@@ -52,7 +56,7 @@ class SelectaedSongControls extends React.Component {
   }
 
   render() {
-    const {songName, artist, length, filePath} = this.state;
+    const {songName, artist } = this.state;
     const {onPlay, onPause, onVolumeUp, onVolumeDown, volume } = this.props;
     const disabled = this.props.song ? false : true;
     return (
