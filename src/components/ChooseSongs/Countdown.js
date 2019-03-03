@@ -64,7 +64,6 @@ class Countdown extends Component {
 
   render() {
     const countDown = this.state;
-
     return (
       <div>
         <span className="Countdown-col">
