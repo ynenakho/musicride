@@ -29,7 +29,7 @@ class Routes extends React.Component {
 			rideSubmitted: false,
 			whereFrom: "San Francisco International Airport (SFO), San Francisco, CA",
 			whereTo: "42 Silicon Valley, Dumbarton Circle, Fremont, CA",
-			chooseData: {songs: []}
+			chooseData: { songs: [] }
 		}
 
 		this.addChooseData = this.addChooseData.bind(this);
@@ -41,17 +41,17 @@ class Routes extends React.Component {
 
 	addChooseData = (data) => {
 		for (let i = 0; i < this.state.chooseData.songs.length; i++) {
-			if (this.state.chooseData.songs[i].id == data.id)
-				return ;
+			if (this.state.chooseData.songs[i].id === data.id)
+				return;
 		}
-		this.setState({ chooseData: {songs: [...this.state.chooseData.songs, data]} }, () => console.log('added new data to choose ', this.state.chooseData));
+		this.setState({ chooseData: { songs: [...this.state.chooseData.songs, data] } }, () => console.log('added new data to choose ', this.state.chooseData));
 	}
 
 	removeChooseData = (data) => {
-		const {chooseData:{songs}} = this.state;
+		const { chooseData: { songs } } = this.state;
 		console.log("data is " + data);
-		_.remove(songs, {id: data});
-		this.setState({chooseData: {songs: songs}}, () => console.log('after removing ', songs));
+		_.remove(songs, { id: data });
+		this.setState({ chooseData: { songs: songs } }, () => console.log('after removing ', songs));
 	}
 
 	addPlayData(data) {
@@ -60,7 +60,7 @@ class Routes extends React.Component {
 
 	startAnimation() {
 		const car = document.querySelector('.car')
-		const {pickupDuration, stopDuration, rideDuration} = this.state;
+		const { pickupDuration, stopDuration, rideDuration } = this.state;
 		console.log(car);
 		car.style.animation = `runCar ${pickupDuration / 1000}s linear forwards, runCarFinish ${rideDuration / 1000}s linear ${stopDuration / 1000 + pickupDuration / 1000}s forwards`;
 		setTimeout(() => {
@@ -70,7 +70,7 @@ class Routes extends React.Component {
 	}
 
 	progressBarHandler() {
-		const {rideDuration, chooseData: {songs}} = this.state;
+		const { rideDuration, chooseData: { songs } } = this.state;
 		let length = 0;
 		songs.map(song => {
 			length += song.length;
@@ -87,22 +87,31 @@ class Routes extends React.Component {
 	}
 
 	render() {
-		const car = this.state.showCar ? <Car countdown={this.state.rideDuration} funcs={{ start: this.startAnimation }} /> : null;
-		const { whereFrom, whereTo, rideSubmitted, chooseData, rideDuration } = this.state;
+		const car = this.state.showCar ? <Car funcs={{ start: this.startAnimation }} /> : null;
+		const { whereFrom, whereTo, rideSubmitted, showCar, chooseData } = this.state;
 		console.log("HERE", this.state.chooseData)
 		return (
 			<Router>
 				<React.Fragment>
-					<Header />
+					<Header showCar={showCar} />
 					<div className="ContainerApp">
 						{car}
 						<Switch>
-							<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
+							<AppliedRoute exact path="/"
+								Component={App}
+								routeData={{ showCar, whereFrom, whereTo, rideSubmitted }}
+								funcs={{ confirmRide: this.confirmRideHandler }} />}
+							/>
 							<AppliedRoute path="/choose"
 								Component={ChooseSongs}
-								routeData={this.state.chooseData}
-								funcs={{ add: this.addChooseData, remove: this.removeChooseData, progress: this.progressBarHandler }} />
-							<AppliedRoute path="/play" Component={PlayList} routeData={this.state.chooseData} funcs={{ add: this.addPlayData }} />
+								routeData={chooseData}
+								funcs={{ add: this.addChooseData, remove: this.removeChooseData, progress: this.progressBarHandler }}
+							/>
+							<AppliedRoute path="/play"
+								Component={PlayList}
+								routeData={chooseData}
+								funcs={{ add: this.addPlayData }}
+							/>
 							<Route component={NotFound} />
 						</Switch>
 					</div>
