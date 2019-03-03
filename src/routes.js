@@ -64,6 +64,8 @@ class Routes extends React.Component {
         
         this.addChooseData = this.addChooseData.bind(this);
         this.addPlayData = this.addPlayData.bind(this);
+        this.startAnimation = this.startAnimation.bind(this);
+        this.startAnimationReverse = this.startAnimationReverse.bind(this);
     }
 
     addChooseData(data) {
@@ -74,13 +76,24 @@ class Routes extends React.Component {
         this.setState({playData: data}, () => console.log('added new data to playData ', this.state.playData));
     }
 
+    
+  startAnimation() {
+    const car = document.querySelector('.car')
+    console.log(car);
+    car.className = "car run";
+  }
+
+  startAnimationReverse() {
+    const car = document.querySelector('.car')
+    car.className = "car run-reverse";
+  }
 
     render() {
         return(
         <Router>
             <React.Fragment>
                 <DevelopLinks />
-                <Header />
+                <Header funcs={{start: this.startAnimation, reverse: this.startAnimationReverse}} />
                 <Switch>
                     <Route exact path="/" component={App}/>
                     <AppliedRoute path="/login" Component={Login} routeData={this.state.chooseData} funcs={{add: this.addChooseData}} />

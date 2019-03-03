@@ -1,0 +1,71 @@
+.car {
+    width: 150px;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.car img{
+    height: 100%;
+    width: 100%;
+}
+
+
+@keyframes runCar {
+    0% {left: 0px}
+    100% {left: calc(100% - 150px)}
+}
+
+@keyframes flipCar {
+    0% {}
+    100% {transform: rotateY(180deg)}
+}
+
+@keyframes reverseCar {
+    0% {left: calc(100% - 150px); transform: rotateY(180deg)}
+    100% {left: 0px; transform: rotateY(180deg)}
+}
+
+@keyframes reverseFlipCar {
+    0% {transform: rotateY(180deg)}
+    100% {transform: rotateY(0deg)}
+}
+
+
+.run {
+    animation: runCar 60s linear forwards, flipCar 1s linear 60s forwards
+}
+
+.run-reverse {
+    animation: reverseCar 60s linear forwards, reverseFlipCar 1s linear 60s forwards
+}
+
+
+
+
+.dev-start {
+    position: absolute;
+    top: 115px;
+}
+
+.dev-prev {
+    position: absolute;
+    top: 115px;
+    left: 90px;
+}
+
+.header {
+    margin-bottom: 130px;
+    position: relative;
+    height: 130px;
+}
+
+.road {
+    height: 10px;
+    width: 100%;
+    background-color: #444;
+    border-radius: 35%;
+    box-shadow: 0 0 32px rgba(0,0,0,1);
+    position: absolute;
+    top: 102px;
+}
