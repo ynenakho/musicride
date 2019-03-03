@@ -1,9 +1,13 @@
 import React from 'react';
 
-const Song = ({ song }) => {
+const Song = ({ id, songName, artist, album, length, filePath }) => {
   return(
-    <div>
-      song
+    <div className="ui segment">
+      <div>{songName}</div>
+      <div>{artist}</div>
+      <div>{album}</div>
+      <div>{length}</div>
+      <div>{filePath}</div>
     </div>
   );
 }

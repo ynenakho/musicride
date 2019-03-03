@@ -1,7 +1,7 @@
 import React from 'react';
 import SongList from './SongList';
 
-class PlaySongs extends React.Component {
+class PlayList extends React.Component {
   constructor(props) {
     super(props);
 
@@ -16,4 +16,4 @@ class PlaySongs extends React.Component {
   }
 }
 
-export default PlaySongs;
+export default PlayList;
