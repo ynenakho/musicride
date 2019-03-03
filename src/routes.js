@@ -24,33 +24,37 @@ class Routes extends React.Component {
 
 		this.state = {
 			showCar: false,
-            chooseData: [],
-            playData: {
-                songs: [{
-                    id: "songN1",
-                    songName: "One Kiss",
-                    artist: "Dua Lipa",
-                    album: "someAlbun1",
-                    length: 4351,
-                    filePath: '/assets/songs/Duke Dumont - Ocean Drive.mp3'
-                  },
-                   {
-                    id: "songN2",
-                    songName: "someSong2",
-                    artist: "someArtist2",
-                    album: "someAlbun2",
-                    length: 4352,
-                    filePath: '/assets/songs/Pharrell Williams - Happy.mp3'
-                  },
-                   {
-                    id: "songN3",
-                    songName: "someSong3",
-                    artist: "someArtist3",
-                    album: "someAlbun3",
-                    length: 4353,
-                    filePath: '/assets/songs/Queen - We Are the Champions.mp3'
-                  }]}
-        }
+			rideSubmitted: false,
+			whereFrom: "",
+			whereTo: "",
+			chooseData: [],
+			playData: {
+				songs: [{
+					id: "songN1",
+					songName: "One Kiss",
+					artist: "Dua Lipa",
+					album: "someAlbun1",
+					length: 4351,
+					filePath: '/assets/songs/Duke Dumont - Ocean Drive.mp3'
+				},
+				{
+					id: "songN2",
+					songName: "someSong2",
+					artist: "someArtist2",
+					album: "someAlbun2",
+					length: 4352,
+					filePath: '/assets/songs/Pharrell Williams - Happy.mp3'
+				},
+				{
+					id: "songN3",
+					songName: "someSong3",
+					artist: "someArtist3",
+					album: "someAlbun3",
+					length: 4353,
+					filePath: '/assets/songs/Queen - We Are the Champions.mp3'
+				}]
+			}
+		}
 
 		this.addChooseData = this.addChooseData.bind(this);
 		this.addPlayData = this.addPlayData.bind(this);
@@ -71,7 +75,8 @@ class Routes extends React.Component {
 	startAnimation() {
 		const car = document.querySelector('.car')
 		console.log(car);
-		car.className = "car run";
+		// car.className = "car run";
+		car.style.animation = "runCar 60s linear forwards, flipCar 1s linear 60s forwards";
 	}
 
 	startAnimationReverse() {
@@ -79,8 +84,14 @@ class Routes extends React.Component {
 		car.className = "car run-reverse";
 	}
 
+	confirmRideHandler = (data) => {
+		const { whereTo, whereFrom } = data;
+		this.setState({ whereTo: whereTo, whereFrom: whereFrom, rideSubmitted: true, showCar:true }, () => console.log('this state = ', this.state));
+	}
+
 	render() {
 		const car = this.state.showCar ? <Car funcs={{ start: this.startAnimation, reverse: this.startAnimationReverse }} /> : null;
+		const { whereFrom, whereTo, rideSubmitted } = this.state;
 
 		return (
 			<Router>
@@ -88,7 +99,7 @@ class Routes extends React.Component {
 					<Header />
 					{car}
 					<Switch>
-						<Route exact path="/" component={App} />
+						<AppliedRoute exact path="/" Component={App} routeData={{ whereFrom, whereTo, rideSubmitted }} funcs={{ confirmRide: this.confirmRideHandler }} />}/>
 						<AppliedRoute path="/home" Component={Home} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
 						<AppliedRoute path="/choose" Component={ChooseSongs} routeData={this.state.chooseData} funcs={{ add: this.addChooseData }} />
 						<AppliedRoute path="/play" Component={PlayList} routeData={this.state.playData} funcs={{ add: this.addPlayData }} />
