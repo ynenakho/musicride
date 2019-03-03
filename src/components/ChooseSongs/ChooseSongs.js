@@ -65,17 +65,17 @@ class ChooseSongs extends React.Component {
   
   render() {
     const {ChooseSongsToggle} = this.state;
-    console.log(this.props);
     return(
         <Container>
-        <Row>
+        <Row className="justify-content-md-center">
           <Col>
-            {ChooseSongsToggle ? this.ConnectSpotify() : <Col style={this.style.SyncButton}><Button onClick={this.RenderSpotify} >Sync Spotify</Button></Col>}
+            {ChooseSongsToggle ? this.ConnectSpotify() : <Col style={this.style.SyncButton}><button style={{background: "rgba(82, 69, 194, 0.5)"}} className="ButtonApp" onClick={this.RenderSpotify} >Sync Spotify</button></Col>}
           </Col>
         </Row>
       </Container>
     );
   }
 }
+
 
 export default ChooseSongs;
