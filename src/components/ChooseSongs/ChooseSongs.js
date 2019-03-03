@@ -1,16 +1,16 @@
-import React from 'react';
+import React  from 'react';
+import {Link} from 'react-router-dom';
 import Board from "./Board";
 import {Button, Container, Row, Col, InputGroup, FormControl, Card} from "react-bootstrap";
 import Countdown from "./Countdown";
 
 class ChooseSongs extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       ChooseSongsToggle: false
     }
     this.RenderSpotify = this.RenderSpotify.bind(this);
-    
   this.style = {
     InputGroup:{
       borderRradius: "10px",
@@ -28,42 +28,37 @@ class ChooseSongs extends React.Component {
       justifyContent:"center"
     }
   }
+}
+RenderSpotify = () => {
+  this.setState({ChooseSongsToggle:true});
+}
+getClients (){
+  return [
+    {id:'1', length:206, songName:'Ocean Drive',artist:'Duke Dumont', filepath:'/assets/songs/Duke Dumont - Ocean Drive.mp3', status:'allsongs',},
+    {id:'2', length:233, songName:'Happy',artist:'Pharrell Williams', filepath:'/assets/songs/Pharrell Williams - Happy.mp3', status:'allsongs',},
+    {id:'3', length:214, songName:'Dont stop me now I',artist:'Queen', filepath:'/assets/songs/Queen - Dont stop me now I.mp3', status:'allsongs',},
+    {id:'4', length:209, songName:'We are the Champions',artist:'Queen', filepath:'/assets/songs/Queen - We are the Champions.mp3', status:'allsongs',},
+    {id:'5', length:274, songName:'Umbrella',artist:'Rihanna feat. JAY-Z', filepath:'/assets/songs/Rihanna feat. JAY-Z - Umbrella.mp3', status:'allsongs',},
+    {id:'6', length:233, songName:'Seven Nation Army',artist:'The White Stripes', filepath:'/assets/songs/The White Stripes - Seven Nation Army.mp3', status:'allsongs',},
+    {id:'7', length:150, songName:'Go Solo',artist:'Tom Rosenthal', filepath:'/assets/songs/Tom Rosenthal - Go Solo.mp3',status: 'allsongs',},
+  ]
+  // .map(companyDetails => ({
+    //   id: companyDetails.id,
+    //   songName: companyDetails.songName,
+    //   artist: companyDetails,
+    //   status: companyDetails[3],
+    // }));
   }
-  RenderSpotify = () => {
-    this.setState({ChooseSongsToggle:true});
-  }
-  getClients (){
-    return [
-      ['1','Stark, White and Abbott','Cloned Optimal Architecture', 'allsongs'],
-      ['2','Wiza LLC','Exclusive Bandwidth-Monitored Implementation', 'allsongs'],
-      ['3','Nolan LLC','Vision-Oriented 4Thgeneration Graphicaluserinterface', 'allsongs'],
-      ['4','Thompson PLC','Streamlined Regional Knowledgeuser', 'allsongs'],
-      ['5','Walker-Williamson','Team-Oriented 6Thgeneration Matrix', 'allsongs'],
-      ['6','Boehm and Sons','Automated Systematic Paradigm', 'allsongs'],
-      ['7','Runolfsson, Hegmann and Block','Integrated Transitional Strategy', 'allsongs'],
-      ['8','Schumm-Labadie','Operative Heuristic Challenge', 'allsongs'],
-      ['9','Kohler Group','Re-Contextualized Multi-Tasking Attitude', 'allsongs'],
-      ['10','Romaguera Inc','Managed Foreground Toolset', 'allsongs'],
-      ['11','Reilly-King','Future-Proofed Interactive Toolset', 'allsongs'],
-      ['12','Emard, Champlin and Runolfsdottir','Devolved Needs-Based Capability', 'allsongs'],
-      ['13','Fritsch, Cronin and Wolff','Open-Source 3Rdgeneration Website', 'allsongs'],
-      ['14','Borer LLC','Profit-Focused Incremental Orchestration', 'allsongs'],
-      ['15','Emmerich-Ankunding','User-Centric Stable Extranet', 'allsongs'],
-      ['16','Willms-Abbott','Progressive Bandwidth-Monitored Access', 'allsongs'],
-      ['17','Brekke PLC','Intuitive User-Facing Customerloyalty', 'allsongs'],
-      ['18','Bins, Toy and Klocko','Integrated Assymetric Software', 'allsongs'],
-      ['19','Hodkiewicz-Hayes','Programmable Systematic Securedline', 'allsongs'],
-      ['20','Murphy, Lang and Ferry','Organized Explicit Access', 'allsongs'],
-    ].map(companyDetails => ({
-      id: companyDetails[0],
-      name: companyDetails[1],
-      description: companyDetails[2],
-      status: companyDetails[3],
-    }));
-  }
+
   ConnectSpotify = () => {
-    console.log(this.state)
-      const clients = this.getClients();
+    const WrappedLink = () => {
+      return (
+        <Button>
+          <Link exact="true" to="/play" />
+        </Button>
+      )
+    }
+    const clients = this.getClients();
       return <div>
         <Col>
                 <InputGroup >
@@ -75,13 +70,14 @@ class ChooseSongs extends React.Component {
                   />
                 </InputGroup>
               </Col>
-        <Board clients={clients}/>
+        <Board AddToPlaylist={this.props.add} clients={clients}/>
+        <WrappedLink>Submit</WrappedLink>
       </div>
   }
   
   render() {
     const {ChooseSongsToggle} = this.state;
-    console.log("render");
+    const clients = this.getClients();
     return(
         <Container>
         <Row className="justify-content-md-center">

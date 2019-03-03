@@ -12,8 +12,8 @@ export default class Board extends React.Component {
     const clients = this.props.clients;
     this.state = {
       clients: {
-        allsongs: clients.filter(client => !client.status || client.status === 'allsongs'),
-        playlist: clients.filter(client => client.status && client.status === 'playlist'),
+        allsongs: [...clients],
+        playlist: []
       }
     }
     this.swimlanes = {
@@ -24,18 +24,20 @@ export default class Board extends React.Component {
   componentDidMount () {
     const drake = Dragula(this.containers, {revertOnSpill: true})
     drake.on('drop', (el, target, source, sibling) => {
-      console.log(el, target, source, sibling);
       let className = ['Card'];
       let col;
       col = target.className;
       col = col.split(' ')[1].toLowerCase();
-      if (col === 'allsongs') {
+      if (col === 'allsongs') { 
         className.push('Card-grey');
       } else if (col === 'playlist') {
         className.push('Card-blue');
       }
       el.className = ''
       el.className = className.join(' ')
+      let id = el.getAttribute('name');
+      this.props.AddToPlaylist(this.props.clients[id - 1]);
+
     });
   }
 

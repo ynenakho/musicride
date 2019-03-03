@@ -10,8 +10,8 @@ export default class Card extends React.Component {
       className.push('Card-blue');
     }
     return (
-      <div className={className.join(' ')} data-id={this.props.id} data-status={this.props.status}>
-        <div className="Card-title">{this.props.name}</div>
+      <div className={className.join(' ')} name={this.props.client.id} data-status={this.props.status}>
+        <div className="Card-title">{this.props.client.artist} - {this.props.client.songName}   {this.props.client.length}</div>
       </div>
     );
   }
