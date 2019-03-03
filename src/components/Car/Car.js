@@ -1,12 +1,12 @@
 import React from 'react';
 
-import "./header-styles.css";
+import "./Car.css";
 
 class Header extends React.Component {
 
   render() {
-    const {start, reverse} = this.props.funcs;
-    return(
+    const { start, reverse } = this.props.funcs;
+    return (
       <div className="ui container header">
         <div className="car">
           <img src="/car.png" alt="car" />
