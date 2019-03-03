@@ -13,7 +13,7 @@
 
 @keyframes runCar {
     0% {left: 0px}
-    100% {left: 550px}
+    100% {left: calc(100% - 150px)}
 }
 
 @keyframes flipCar {
@@ -22,7 +22,7 @@
 }
 
 @keyframes reverseCar {
-    0% {left: 550px; transform: rotateY(180deg)}
+    0% {left: calc(100% - 150px); transform: rotateY(180deg)}
     100% {left: 0px; transform: rotateY(180deg)}
 }
 
@@ -33,11 +33,11 @@
 
 
 .run {
-    animation: runCar 4s linear forwards, flipCar 1s linear 4s forwards
+    animation: runCar 60s linear forwards, flipCar 1s linear 60s forwards
 }
 
 .run-reverse {
-    animation: reverseCar 4s linear forwards, reverseFlipCar 1s linear 4s forwards
+    animation: reverseCar 60s linear forwards, reverseFlipCar 1s linear 60s forwards
 }
 
 

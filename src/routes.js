@@ -75,12 +75,15 @@ class Routes extends React.Component {
     }
 
     
-  startAnimation(car) {
-    car.current.className = "car run";
+  startAnimation() {
+    const car = document.querySelector('.car')
+    console.log(car);
+    car.className = "car run";
   }
 
-  startAnimationReverse(car) {
-    car.current.className = "car run-reverse";
+  startAnimationReverse() {
+    const car = document.querySelector('.car')
+    car.className = "car run-reverse";
   }
 
     render() {
