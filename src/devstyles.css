@@ -1,0 +1,14 @@
+.dev-links{
+    background-color: #eee;
+    width: 100%;
+}
+
+.dev-ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dev-li {
+    margin: 10px;
+}
